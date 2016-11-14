@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game.cube;
+package com.game.cube.builder;
 
 import com.game.cube.model.Piece;
 import java.util.List;

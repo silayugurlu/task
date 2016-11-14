@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game.cube;
+package com.game.cube.builder;
 
+import com.game.cube.CubeHelper;
 import com.game.cube.model.Piece;
 import com.game.cube.model.ResultPiece;
 import java.io.IOException;

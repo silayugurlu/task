@@ -7,9 +7,6 @@ import com.game.cube.model.Edge;
 import com.game.cube.model.PossiblePiece;
 import com.game.cube.model.ResultPiece;
 import com.game.cube.model.Piece;
-import com.game.cube.model.PieceId;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Map.Entry;
 
 /**
  *
@@ -27,16 +24,16 @@ public class CubeHelper {
      *
      */
     public Piece changePiece(Piece piece, int rotation, boolean mirror) {
-        PieceId newId = new PieceId(piece.getId().getId(), rotation, mirror);
+
         int[][] nodes = piece.getNodes();
-        if (newId.isMirror()) {
+        if (mirror) {
             nodes = mirrorPiece(piece.getNodes());
         }
-        for (int i = 0; i < newId.getRotation(); i++) {
+        for (int i = 0; i < rotation; i++) {
             nodes = rotatePiece(nodes);
         }
 
-        Piece newPiece = new Piece(newId, nodes);
+        Piece newPiece = new Piece(piece.getId(), nodes);
         return newPiece;
     }
 
@@ -75,16 +72,6 @@ public class CubeHelper {
         return newnodes;
     }
 
-    public boolean checkPiecesSame(Piece piece1, Piece piece2) {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (piece1.getNodes()[i][j] != piece2.getNodes()[i][j]) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
     /**
      * Builds cube, get pieces in puzzle and returns matchedPiece contains all

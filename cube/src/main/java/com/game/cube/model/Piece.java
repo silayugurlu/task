@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class Piece {
 
-    private PieceId id;
+
+    private int id;
     private int[][] nodes;
     private List<Edge> edges;
     
@@ -21,12 +22,12 @@ public class Piece {
         super();
     }
 
-    public Piece(PieceId id) {
+    public Piece(int id) {
         super();
         this.id = id;
     }
 
-    public Piece(PieceId id, int[][] nodes) {
+    public Piece(int id, int[][] nodes) {
         super();
         this.id = id;
         this.nodes = nodes;
@@ -49,11 +50,11 @@ public class Piece {
                 && (verticeSum == 0 || verticeSum == 4);
     }
 
-    public PieceId getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(PieceId id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -83,7 +84,7 @@ public class Piece {
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return id;
     }
 
     @Override
@@ -92,7 +93,7 @@ public class Piece {
             return false;
         }
         Piece param = (Piece) obj;
-        return this.id.equals(param.getId());
+        return this.id == param.getId();
     }
 
     public List<String> toStringList() {
