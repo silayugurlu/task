@@ -1,6 +1,6 @@
 You can use CubeBuilder to build cube, it has two methods for base task and additional task1, they print cubes to the file named color
 
-   /**
+	  /**
      * Gets pieces in puzzle, builds first possible cube and prints it to the
      * file named {color}_base.text
      * 
