@@ -100,7 +100,7 @@ public class CubeHelper {
     public PossiblePiece putPiecesInLine(List<Piece> pieces) {
 
         // put first piece as a root
-        PossiblePiece root = new PossiblePiece(pieces.get(0));
+        PossiblePiece root = new PossiblePiece(changePiece(pieces.get(0), 0, true));
 
         //put possible pieces as second piece
         Edge rootEdge = root.getEdges().get(2);
@@ -236,12 +236,10 @@ public class CubeHelper {
 
         List<PossiblePiece> matchedPieces = new ArrayList<PossiblePiece>();
 
-        List<Edge> edges = piece.getEdges();
-
         Piece newPiece = piece;
         for (int rotate = 0; rotate < 4; rotate++) {
             if (checkTwoEdgesMatch(matchedEdge, newPiece.getEdge(0), true) && (!checkOpposite
-                    || (checkOpposite && checkTwoEdgesMatch(edges.get((rotate + 2) % 4), oppositeEdge, true)))) {
+                    || (checkOpposite && checkTwoEdgesMatch(newPiece.getEdge(2), oppositeEdge, true)))) {
                 matchedPieces.add(new PossiblePiece(newPiece));
             }
             if (piece.isSymmetric() && rotate == 1) {
@@ -258,7 +256,7 @@ public class CubeHelper {
             newPiece = changePiece(piece, 0, true);
             for (int rotate = 0; rotate < 4; rotate++) {
                 if (checkTwoEdgesMatch(matchedEdge, newPiece.getEdge(0), true) && (!checkOpposite
-                        || (checkOpposite && checkTwoEdgesMatch(edges.get((rotate + 2) % 4), oppositeEdge, true)))) {
+                        || (checkOpposite && checkTwoEdgesMatch(newPiece.getEdge(2), oppositeEdge, true)))) {
 
                     matchedPieces.add(new PossiblePiece(newPiece));
                 }
@@ -268,7 +266,7 @@ public class CubeHelper {
                 if (piece.isAllEdgesSame()) {
                     break;
                 }
-                newPiece = changePiece(piece, rotate, false);
+                newPiece = changePiece(newPiece, 1, false);
             }
         }
         return matchedPieces;
